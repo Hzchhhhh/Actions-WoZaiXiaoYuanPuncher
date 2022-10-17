@@ -85,8 +85,8 @@ class WoZaiXiaoYuanPuncher:
     # 执行打卡
     def doPunchIn(self):
         print("正在打卡...")
-        url = "https://student.wozaixiaoyuan.com/health/save.json"
-        self.header["Host"] = "student.wozaixiaoyuan.com"
+        url = "https://gw.wozaixiaoyuan.com/health/mobile/health/save.json"
+        self.header["Host"] = "gw.wozaixiaoyuan.com"
         self.header["Content-Type"] = "application/x-www-form-urlencoded"
         self.header["JWSESSION"] = self.getJwsession()
         cur_time = int(round(time.time() * 1000))
