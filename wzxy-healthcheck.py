@@ -91,25 +91,15 @@ class WoZaiXiaoYuanPuncher:
         self.header["JWSESSION"] = self.getJwsession()
         cur_time = int(round(time.time() * 1000))
         sign_data = {
-            "answers": '["0","1","1"]',  # 在此自定义answers字段
-            "latitude": os.environ["WZXY_LATITUDE"],
-            "longitude": os.environ["WZXY_LONGITUDE"],
-            "country": os.environ["WZXY_COUNTRY"],
-            "city": os.environ["WZXY_CITY"],
-            "district": os.environ["WZXY_DISTRICT"],
-            "province": os.environ["WZXY_PROVINCE"],
-            "township": os.environ["WZXY_TOWNSHIP"],
-            "street": os.environ["WZXY_STREET"],
-            "areacode": os.environ["WZXY_AREACODE"],
-            "towncode": os.environ["WZXY_TOWNCODE"],
-            "citycode": os.environ["WZXY_CITYCODE"],
-            "timestampHeader": cur_time,
-            "signatureHeader": hashlib.sha256(
-                f"{os.environ['WZXY_PROVINCE']}_{cur_time}_{os.environ['WZXY_CITY']}".encode(
-                    "utf-8"
-                )
-            ).hexdigest(),
-        }
+  "location" : "中国\/陕西省\/西安市\/长安区\/郭杜街道\/居安路\/156\/610116\/156610100\/610116002",
+  "t4" : "当前在长安校区（含外出但不过夜）",
+  "locationMode" : 0,
+  "locationType" : 0,
+  "t2" : "全域为常态化疫情防控区",
+  "t3" : "无不适症状",
+  "type" : 0,
+  "t1" : "[\"无下列情况\"]"
+}
         data = urlencode(sign_data)
         self.session = requests.session()
         response = self.session.post(url=url, data=data, headers=self.header)
